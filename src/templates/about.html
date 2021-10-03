@@ -2,11 +2,12 @@
 
 {% block content %}
 	<h1>About</h1>
+	<h3>{{ title|title }}</h3>
+
 	<p>This page was construction from src.template</p>
 
-	<b>
-		{{ my_text }}
-	</b>
+	{{ my_html|striptags|slugify }}
+
 	<p>
 		{{ my_number }}
 		{{ my_list }}
