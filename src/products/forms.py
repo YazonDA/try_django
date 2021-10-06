@@ -13,6 +13,7 @@ class ProductForm(forms.ModelForm):
 									attrs={
 									'placeholder': 'Your Description',
 									'class': 'new-class-name two',
+									'id': 'my-id-for-text-area',
 									'rows': 20,
 									'cols': 100}))
 	price		= forms.DecimalField(initial=199.99)
@@ -42,6 +43,7 @@ class RawProductForm(forms.Form):
 								attrs={
 								'placeholder': 'Your Description',
 								'class': 'new-class-name two',
+								'id': 'my-id-for-text-area',
 								'rows': 20,
 								'cols': 100
 								}
