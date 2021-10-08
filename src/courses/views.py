@@ -3,17 +3,17 @@ from django.views import View
 
 from .forms import CourseModelForm
 from .models import Course
+# BASE VIEW CLass = VIEW
 
 
 class CourseUpdateView(View):
-	template_name = 'courses/course_update.html'
+	template_name = 'courses/course_update.html' # DetailView
 	
 	def get_object(self):
 		id = self.kwargs.get('id')
 		obj = None
 		if id is not None:
 			obj = get_object_or_404(Course, id=id)
-			#context['object'] = obj
 		return obj
 
 	def get(self, request, id=None, *args, **kwargs):
@@ -22,7 +22,7 @@ class CourseUpdateView(View):
 		obj = self.get_object()
 		if obj is not None:
 			form = CourseModelForm(instance=obj)
-			context['objects'] = obj
+			context['object'] = obj
 			context['form'] = form
 		return render(request, self.template_name, context)	
 
@@ -34,12 +34,12 @@ class CourseUpdateView(View):
 			form = CourseModelForm(request.POST, instance=obj)
 			if form.is_valid():
 				form.save()
-			context['objects'] = obj
+			context['object'] = obj
 			context['form'] = form
 		return render(request, self.template_name, context)
 
 class CourseCreateView(View):
-	template_name = 'courses/course_create.html'
+	template_name = 'courses/course_create.html' # DetailView
 	
 	def get(self, request, *args, **kwargs):
 		# GET method
@@ -68,7 +68,7 @@ class CourseListView(View):
 		return render(request, self.template_name, context)
 
 class CourseView(View):
-	template_name = 'courses/course_detail.html'
+	template_name = 'courses/course_detail.html' # DetailView
 	
 	def get(self, request, id=None, *args, **kwargs):
 		# GET method
@@ -78,8 +78,8 @@ class CourseView(View):
 			context['object'] = obj
 		return render(request, self.template_name, context)
 
-	# def post(request, *args, **kwargs):
-	# 	return render(request, 'about.html', {})
+    # def post(request, *args, **kwargs):
+    #   return render(request, 'about.html', {})
 
 
 # HTTP METHODS
