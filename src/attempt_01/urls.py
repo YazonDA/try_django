@@ -11,5 +11,7 @@ urlpatterns = [
 
 urlpatterns += [
     path('', HomeView, name='home'),
+    path('products/', include('products.urls')),
+    path('shoplist/', include('shop_list.urls')),
     path('about/', about_view),
 ]
