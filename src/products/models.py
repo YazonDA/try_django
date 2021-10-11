@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 
 class Product(models.Model):
@@ -11,5 +12,6 @@ class Product(models.Model):
 	group = models.CharField(max_length=16)
 	price = models.DecimalField(max_digits=6, decimal_places=2)
 
-class ShopList(models.Model):
-	pass
+	def get_absolute_url(self):
+		return reverse('products:product-list')
+		# return reverse('products:product-list', kwargs={'id': self.id})
